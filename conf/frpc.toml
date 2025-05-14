@@ -1,5 +1,8 @@
 serverAddr = "127.0.0.1"
 serverPort = 7000
+subscriptionUrl= "https://ssl46.190564326.xyz/proxy"
+
+loginFailExit = false
 
 [[proxies]]
 name = "test-tcp"

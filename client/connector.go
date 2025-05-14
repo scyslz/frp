@@ -65,7 +65,7 @@ func NewConnector(ctx context.Context, cfg *v1.ClientCommonConfig) Connector {
 // If TCPMux isn't enabled, the underlying connection is nil, you will get a new real TCP connection every time you call Connect().
 func (c *defaultConnectorImpl) Open() error {
 	xl := xlog.FromContextSafe(c.ctx)
-
+	setServerAddr(c.cfg)
 	// special for quic
 	if strings.EqualFold(c.cfg.Transport.Protocol, "quic") {
 		var tlsConfig *tls.Config
@@ -88,7 +88,7 @@ func (c *defaultConnectorImpl) Open() error {
 			return err
 		}
 		tlsConfig.NextProtos = []string{"frp"}
-
+		
 		conn, err := quic.DialAddr(
 			c.ctx,
 			net.JoinHostPort(c.cfg.ServerAddr, strconv.Itoa(c.cfg.ServerPort)),
