@@ -88,7 +88,7 @@ func (c *defaultConnectorImpl) Open() error {
 			return err
 		}
 		tlsConfig.NextProtos = []string{"frp"}
-		
+
 		conn, err := quic.DialAddr(
 			c.ctx,
 			net.JoinHostPort(c.cfg.ServerAddr, strconv.Itoa(c.cfg.ServerPort)),

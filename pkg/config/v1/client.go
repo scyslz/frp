@@ -41,7 +41,7 @@ type ClientCommonConfig struct {
 	// ServerAddr specifies the address of the server to connect to. By
 	// default, this value is "0.0.0.0".
 	ServerAddr string `json:"serverAddr,omitempty"`
-    
+
 	// dynamic get ServerAddr and port
 	SubscriptionUrl string `json:"subscriptionUrl,omitempty"`
 	// ServerPort specifies the port to connect to the server on. By default,

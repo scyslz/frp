@@ -1,28 +1,28 @@
-
 package client
-import(
+
+import (
+	"fmt"
+	"io/ioutil"
+	"net/http"
 	"net/url"
 	"strconv"
 	"strings"
-	"io/ioutil"
-	"fmt"
-	"net/http"
 
 	v1 "github.com/fatedier/frp/pkg/config/v1"
 	"github.com/fatedier/frp/pkg/util/log"
-	
 )
-func setServerAddr (cfg *v1.ClientCommonConfig){
-			// Fetch latest server URL from subscription if provided
-			if cfg.SubscriptionUrl != "" {
-				if updatedServer, err := fetchServerFromSubscription(cfg.SubscriptionUrl); err == nil {
-					log.Infof("Successfully fetched latest server from subscription: %s", updatedServer)
-					cfg.ServerAddr,cfg.ServerPort = splitURL(updatedServer);
-		
-				} else {
-					log.Errorf("Failed to fetch latest server from subscription: %v. Using configured server: %s:%d", err,cfg.ServerAddr,cfg.ServerPort )
-				}
-			}
+
+func setServerAddr(cfg *v1.ClientCommonConfig) {
+	// Fetch latest server URL from subscription if provided
+	if cfg.SubscriptionUrl != "" {
+		if updatedServer, err := fetchServerFromSubscription(cfg.SubscriptionUrl); err == nil {
+			log.Infof("Successfully fetched latest server from subscription: %s", updatedServer)
+			cfg.ServerAddr, cfg.ServerPort = splitURL(updatedServer)
+
+		} else {
+			log.Errorf("Failed to fetch latest server from subscription: %v. Using configured server: %s:%d", err, cfg.ServerAddr, cfg.ServerPort)
+		}
+	}
 }
 
 // Fetches the latest server URL from a subscription address

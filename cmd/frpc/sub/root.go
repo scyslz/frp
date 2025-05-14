@@ -25,7 +25,6 @@ import (
 	"syscall"
 	"time"
 
-
 	"github.com/spf13/cobra"
 
 	"github.com/fatedier/frp/client"
@@ -150,7 +149,7 @@ func startService(
 		log.Infof("start frpc service for config file [%s]", cfgFile)
 		defer log.Infof("frpc service for config file [%s] stopped", cfgFile)
 	}
-	
+
 	svr, err := client.NewService(client.ServiceOptions{
 		Common:         cfg,
 		ProxyCfgs:      proxyCfgs,
@@ -168,4 +167,3 @@ func startService(
 	}
 	return svr.Run(context.Background())
 }
-
