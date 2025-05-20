@@ -26,5 +26,8 @@ jobs:
         with:
           version: latest
           args: release --clean --release-notes=./Release.md
+          release_name: "Release ${{ github.ref }}"
+          owner: "scyslz" 
+          name: "frp"  
         env:
           GITHUB_TOKEN: ${{ secrets.GPR_TOKEN }}
