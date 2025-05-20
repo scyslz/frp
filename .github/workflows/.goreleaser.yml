@@ -3,7 +3,10 @@ project_name: my-fro  # 项目名称，可以随便定义
 release:
   github:
     owner: scyslz   # 用你自己的 GitHub 用户名替换
-    name: master                # 仓库名称
+    name: frp                # 仓库名称
+    draft: false                   # 可选：创建草稿发布
+    prerelease: false             # 可选：是否为预发布版本
+    target_commitish: master
 
 build:
   goos:
