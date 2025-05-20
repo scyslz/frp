@@ -25,9 +25,6 @@ jobs:
         uses: goreleaser/goreleaser-action@v5
         with:
           version: latest
-          args: release --clean --release-notes=./Release.md
-          release_name: "Release ${{ github.ref }}"
-          owner: "scyslz" 
-          name: "frp"  
+          args: release --clean --release-notes=./Release.md --config ./.github/workflows/.goreleaser.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GPR_TOKEN }}
